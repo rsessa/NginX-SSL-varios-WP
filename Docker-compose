@@ -43,8 +43,11 @@ services:
     restart: always
     volumes:
       - ./wordpress:/var/www/html
-    env_file: .wordpress.env
     environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: exampleuser
+      WORDPRESS_DB_PASSWORD: examplepass
+      WORDPRESS_DB_NAME: exampledb
       WORDPRESS_DB_HOST: db:3306
       VIRTUAL_HOST: DOMINIO O SUBDOMINIO REAL
       LETSENCRYPT_HOST: DOMINIO O SUBDOMINIO REAL(el mismo de arriba)
@@ -58,7 +61,11 @@ services:
     restart: always
     env_file: .db.env
     environment:
-    - NETWORK_ACCESS=internal      
+      MYSQL_DATABASE: exampledb
+      MYSQL_USER: exampleuser
+      MYSQL_PASSWORD: examplepass
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+      NETWORK_ACCESS: internal
     
   wordpress2:
     depends_on:
@@ -70,8 +77,11 @@ services:
     restart: always
     volumes:
       - ./wordpress2:/var/www/html
-    env_file: .wordpress2.env
     environment:
+      WORDPRESS_DB_HOST: db2
+      WORDPRESS_DB_USER: exampleuser
+      WORDPRESS_DB_PASSWORD: examplepass
+      WORDPRESS_DB_NAME: exampledb
       WORDPRESS_DB_HOST: db:3306
       VIRTUAL_HOST: DOMINIO O SUBDOMINIO REAL
       LETSENCRYPT_HOST: DOMINIO O SUBDOMINIO REAL(el mismo de arriba)
@@ -85,7 +95,11 @@ services:
     restart: always
     env_file: .db2.env
     environment:
-    - NETWORK_ACCESS=internal      
+      MYSQL_DATABASE: exampledb
+      MYSQL_USER: exampleuser
+      MYSQL_PASSWORD: examplepass
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+      NETWORK_ACCESS: internal  
     
   wordpress3:
     depends_on:
@@ -97,8 +111,11 @@ services:
     restart: always
     volumes:
       - ./wordpress3:/var/www/html
-    env_file: .wordpress3.env
     environment:
+      WORDPRESS_DB_HOST: db3
+      WORDPRESS_DB_USER: exampleuser
+      WORDPRESS_DB_PASSWORD: examplepass
+      WORDPRESS_DB_NAME: exampledb
       WORDPRESS_DB_HOST: db:3306
       VIRTUAL_HOST: DOMINIO O SUBDOMINIO REAL
       LETSENCRYPT_HOST: DOMINIO O SUBDOMINIO REAL(el mismo de arriba)
@@ -112,6 +129,10 @@ services:
     restart: always
     env_file: .db3.env
     environment:
-    - NETWORK_ACCESS=internal      
+      MYSQL_DATABASE: exampledb
+      MYSQL_USER: exampleuser
+      MYSQL_PASSWORD: examplepass
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+      NETWORK_ACCESS: internal      
     
     
